@@ -1,9 +1,15 @@
 import java.util.*;
-// package String;
-//input ==a2b3c4 output =aabbcccc   :=02-03-25
-public class DecodeString {
+public class DecodeStringWithRepetation {
+    //input: jon2kd3op3  output:jonjonkdkdkdopopop(jon repets 2 times kd repets 3 times op repets 3 times)
+    public static String findlast(StringBuilder str){
+        int n=str.length()-1;
+        while(n>=0&&Character.isLetter(str.charAt(n))){
+            n--;
+        }
+        return str.substring(n+1);
+    }
     public static void main(String[] args) {
-        String str="jon2c4";
+        String str="jontu2k2";
         StringBuilder ans=new StringBuilder();
         int n=str.length();
         int i=0;
@@ -14,8 +20,9 @@ public class DecodeString {
             }
             else{
                 int count=ch-'0';
+                String lastsegment=findlast(ans);
                 for(int j=1;j<count;j++){
-                    ans.append(ans.charAt(ans.length()-1));
+                    ans.append(lastsegment);
                 }
             }
             i++;
